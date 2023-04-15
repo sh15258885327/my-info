@@ -57,7 +57,7 @@
         padding-right: 20px;
       }
       .shen-jie {
-        transform: translate(30px,-120px) rotate(-30deg) !important;
+        transform: translate(30px, -120px) rotate(-30deg) !important;
       }
     </style>
   </head>
@@ -66,9 +66,11 @@
       <div class="row-header">
         <div class="row position-relative">
           <img
-            src="./images/350.jpg"
+            src="./images/3501.jpg"
+            data-src="./images/350.jpg"
             class="object-fit-cover"
             style="height: 200px"
+            id="img1"
           />
           <span
             class="position-absolute top-50 start-50 translate-middle self-title"
@@ -91,9 +93,11 @@
         <div class="row content shadow-sm">
           <div class="col-4 d-flex align-items-center">
             <img
-              src="./images/my.jpg"
+              src="./images/my1.jpg"
+              data-src="./images/my.jpg"
               class="object-fit-contain rounded"
               style="height: 90px"
+              id="img2"
             />
           </div>
           <div class="col-8">
@@ -286,6 +290,15 @@
       window.onresize = () => {
         setHeight();
       };
+      let img1 = document.querySelector("#img1");
+      let img2 = document.querySelector("#img2");
+      [img1, img2].forEach((img) => {
+        let image = new Image();
+        image.src = img.src;
+        image.onload = () => {
+          img.src = img.dataset.src;
+        };
+      });
     </script>
   </body>
 </html>
